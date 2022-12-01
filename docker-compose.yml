@@ -1,0 +1,19 @@
+version: "3.4"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: api
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
